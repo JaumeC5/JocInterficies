@@ -30,7 +30,7 @@ public class RTypeLite extends Game {
 		stage = new Stage();
 
 		//Player
-		texturePlayer = new Texture("ship.png");
+		texturePlayer = new Texture("spaceship.png");
 		player = new MainCharacter(texturePlayer);
 		stage.addActor(player);
 		player.setPosition(100, 100);

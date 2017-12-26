@@ -16,7 +16,7 @@ public class Bullet extends Actor {
 
     public Bullet(Texture texture){
         this.bulletTexture = texture;
-        bulletSprite = new Sprite(bulletTexture);
+        //bulletSprite = new Sprite(this.bulletTexture);
     }
 
 
