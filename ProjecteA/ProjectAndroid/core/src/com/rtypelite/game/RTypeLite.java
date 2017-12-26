@@ -1,51 +1,45 @@
 package com.rtypelite.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
+import java.util.ArrayList;
 
 
-
-public class RTypeLite extends ApplicationAdapter {
+public class RTypeLite extends Game {
 
 	private InputProcesador inputprac;
+	private Stage stage;
 
+	public static MainCharacter player;
+	private Texture texturePlayer;
+	private Texture textureOrangeEnemy;
+	private Texture textureGreenEnemy;
+	private Texture textureBullet;
 
+	static ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
-	SpriteBatch batch;
-	//Texture img;
-	//Texture imgprota;
-	//Sprite prota;
-
-	Texture imgspaceship;
-	Sprite spaceship;
-	Texture imgspace;
-	Sprite space;
-
-	MainCharacter ship;
-	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		//img = new Texture("badlogic.jpg");
+		stage = new Stage();
 
-		//imgprota = new Texture("badlogic.jpg");
-		//prota = new Sprite(imgprota);
+		//Player
+		texturePlayer = new Texture("ship.png");
+		player = new MainCharacter(texturePlayer);
+		stage.addActor(player);
+		player.setPosition(100, 100);
 
-		imgspace = new Texture("space.png");
-		space = new Sprite(imgspace);
+		//Enemies
+		textureOrangeEnemy = new Texture("enemyOrange.png");
+		textureGreenEnemy = new Texture("enemyGreen.png");
 
-		imgspaceship = new Texture("spaceship.png");
-		spaceship = new Sprite(imgspaceship);
-		spaceship.setScale(0.2f, 0.2f);
-		spaceship.setPosition(0,0);
-
-		ship = new MainCharacter();
-
-		inputprac = new InputProcesador(ship); //ship es un MainCharacter
+		inputprac = new InputProcesador(player);
 		Gdx.input.setInputProcessor(inputprac);
 
 	}
@@ -55,24 +49,22 @@ public class RTypeLite extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		//prota.setPosition(Gdx.graphics.getWidth()/2 - prota.getWidth()/2, Gdx.graphics.getHeight()/2 - prota.getHeight()/2);
-		//input();
+		stage.act();
+		stage.draw();
 
+		Bullet b = new Bullet(textureBullet);
+		Bullet.addBullet(b);
 
-
-		batch.begin();
-		space.draw(batch);
-		//batch.draw(imgprota, 0, 0);
-		//prota.draw(batch);
-		spaceship.draw(batch);
-
-		batch.end();
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
-		//imgprota.dispose();
+		super.dispose();
+		stage.dispose();
+		texturePlayer.dispose();
+		textureGreenEnemy.dispose();
+		textureOrangeEnemy.dispose();
+
 	}
 
 	public void input(){

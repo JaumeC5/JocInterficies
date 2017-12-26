@@ -38,7 +38,4 @@ public class InputProcesador extends InputAdapter {
         return true;
     }
 
-
-
-
 }
