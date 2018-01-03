@@ -4,38 +4,40 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Rectangle;
 
 /**
  * Created by jaume on 26/12/2017.
  */
 
-public class GreenEnemy extends Enemy{
+public class GreenEnemy extends Enemy {
 
-    Sprite greenSprite;
+    private Boolean turn = false;
 
     public GreenEnemy(Texture texture){
         super(texture);
+        velX = mathU.random(20, 40);
+        velY = mathU.random(60, 120);
     }
 
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        batch.draw(enemyTexture, getX(), getY(), 0, 0, enemyTexture.getWidth(), enemyTexture.getHeight(), getScaleX(),
-                getScaleY(), getRotation(), 0, 0, enemyTexture.getWidth(), enemyTexture.getHeight(), false, false);
-    }
 
     @Override
     public void act(float delta) {
-
-        setX(getX() - 50* delta);
-
-        if (greenSprite.getY() + greenSprite.getHeight() <= Gdx.graphics.getHeight()){
-            setY(getY() - 100* delta);
+        setX(getX() - velX * delta);
+        if(getY() <= 0){
+            turn = true;
+        }
+        if(getY() >= Gdx.graphics.getHeight() - texture.getHeight()){
+            turn = false;
         }
 
-        if(greenSprite.getY() <= 0){
-            setY(getY() + 100* delta);
+        if(turn == true){
+            setY(getY() + velY * delta);
         }
-
-
+        else if(turn == false){
+            setY(getY() - velY * delta);
+        }
     }
+
+
 }

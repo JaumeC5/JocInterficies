@@ -6,47 +6,52 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 
 /**
  * Created by jcompany on 12/18/2017.
  */
 
-public class MainCharacter extends Actor {
-    Texture playerTexture;
-    Sprite playerSprite;
+public class MainCharacter extends GameObject {
+    Group group = new Group();
 
-    float playerSpeed = 2;
+    Texture playerTexture;
+    Vector2 playerPos = new Vector2(getX(), getY());
+
+    float playerSpeed = 5;
 
     public MainCharacter(Texture texture){
-        this.playerTexture = texture;
-        playerSprite = new Sprite(this.playerTexture);
+        this.texture = texture;
     }
 
     public void goUp(){
-        if(playerSprite.getY() + playerSprite.getHeight() <= Gdx.graphics.getHeight()){
-            playerSprite.setY(playerSprite.getY() + playerSpeed);
+        if(getY() <= Gdx.graphics.getHeight()){
+            setY(getY() - playerSpeed);
         }
     }
 
     public void goDown(){
-        if(playerSprite.getY() <= 0){
-            playerSprite.setY(playerSprite.getY() - playerSpeed);
+        if(getY() >= getHeight()){
+            setY(getY() + playerSpeed);
         }
-    }
-
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        batch.draw(playerTexture, getX(), getY(), 0, 0, playerTexture.getWidth(), playerTexture.getHeight(), getScaleX(),
-                   getScaleY(), getRotation(), 0, 0, playerTexture.getWidth(), playerTexture.getHeight(), false, false);
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
+
+        if(getY() >= Gdx.graphics.getHeight() - 10){
+            setY(Gdx.graphics.getHeight() - 10);
+        }
+        if(getY() <= texture.getHeight() - 30){
+            setY(texture.getHeight() - 30);
+        }
+
     }
 
+
     public Vector2 getPos(){
-        Vector2 pos = new Vector2(getX(), getY());
-        return pos;
+
+        return playerPos;
     }
 }

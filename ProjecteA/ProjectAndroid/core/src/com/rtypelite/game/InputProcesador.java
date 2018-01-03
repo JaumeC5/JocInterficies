@@ -1,7 +1,10 @@
 package com.rtypelite.game;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /**
  * Created by jcompany on 12/18/2017.
@@ -12,15 +15,24 @@ public class InputProcesador extends InputAdapter {
     private MainCharacter personaje;
     private Vector2 lastTouch = new Vector2();
 
+    private MainCharacter player;
+    private Stage stage;
+    private AssetsManager assets = new AssetsManager();
 
-    public InputProcesador(MainCharacter k)
-    {
+    public InputProcesador(MainCharacter k) {
         personaje = k;
     }
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button){
+
         lastTouch.set(screenX, screenY);
+        if (button == Input.Buttons.RIGHT){
+            Bullet bullet = new Bullet(assets.textureBullet);
+            ShotsManager.bullets.add(bullet);
+            return true;
+
+        }
         return true;
     }
 
