@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
 /**
@@ -16,10 +17,9 @@ public class GreenEnemy extends Enemy {
 
     public GreenEnemy(Texture texture){
         super(texture);
-        velX = mathU.random(20, 40);
-        velY = mathU.random(60, 120);
+        velX = MathUtils.random(20, 40);
+        velY = MathUtils.random(60, 120);
     }
-
 
     @Override
     public void act(float delta) {

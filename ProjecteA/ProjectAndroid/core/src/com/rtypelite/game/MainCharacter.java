@@ -13,10 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.Group;
  */
 
 public class MainCharacter extends GameObject {
-    Group group = new Group();
-
-    Texture playerTexture;
-    Vector2 playerPos = new Vector2(getX(), getY());
 
     float playerSpeed = 5;
 
@@ -39,19 +35,11 @@ public class MainCharacter extends GameObject {
     @Override
     public void act(float delta) {
         super.act(delta);
-
         if(getY() >= Gdx.graphics.getHeight() - 10){
             setY(Gdx.graphics.getHeight() - 10);
         }
         if(getY() <= texture.getHeight() - 30){
             setY(texture.getHeight() - 30);
         }
-
-    }
-
-
-    public Vector2 getPos(){
-
-        return playerPos;
     }
 }

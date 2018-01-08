@@ -31,7 +31,6 @@ public class InputProcesador extends InputAdapter {
             Bullet bullet = new Bullet(assets.textureBullet);
             ShotsManager.bullets.add(bullet);
             return true;
-
         }
         return true;
     }

@@ -20,6 +20,7 @@ public class ShotsManager extends Actor {
         assets = assetsManager;
         this.stage = stage;
     }
+
     public void act(float delta) {
 
         for (int i = 0; i < bullets.size(); i++) {

@@ -3,6 +3,7 @@ package com.rtypelite.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /**
@@ -11,28 +12,28 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class EnemyManager extends Actor {
 
-    MathUtils mathU;
-    Stage stage;
+    //Stage stage;
     private AssetsManager assets;
     private int oCount = -1;
     private int gCount = -1;
+    public static Group enemies;
 
     public EnemyManager(AssetsManager assetsManager, Stage stage){
-        assets = assetsManager;
-        this.stage = stage;
+        assets = assetsManager; //ferla statica
+        //this.stage = stage;
+        enemies = new Group();
     }
     public void act(float delta){
-        if(oCount % mathU.random(200, 400) == 0) {
+        if(oCount % MathUtils.random(200, 400) == 0) {
             OrangeEnemy oEnemy = new OrangeEnemy(assets.textureOrangeEnemy);
-            oEnemy.setPosition(Gdx.graphics.getWidth(), mathU.random(0, Gdx.graphics.getHeight() - assets.textureOrangeEnemy.getHeight()));
-            stage.addActor(oEnemy);
+            oEnemy.setPosition(Gdx.graphics.getWidth(), MathUtils.random(0, Gdx.graphics.getHeight() - assets.textureOrangeEnemy.getHeight()));
+            enemies.addActor(oEnemy);
         }
 
-        if(gCount % mathU.random(400, 600) == 0){
+        if(gCount % MathUtils.random(400, 600) == 0){
             GreenEnemy gEnemy = new GreenEnemy(assets.textureGreenEnemy);
-            gEnemy.setPosition(Gdx.graphics.getWidth(), mathU.random(0, Gdx.graphics.getHeight() - assets.textureGreenEnemy.getHeight()));
-            stage.addActor(gEnemy);
-
+            gEnemy.setPosition(Gdx.graphics.getWidth(), MathUtils.random(0, Gdx.graphics.getHeight() - assets.textureGreenEnemy.getHeight()));
+            enemies.addActor(gEnemy);
         }
         oCount++; gCount++;
 

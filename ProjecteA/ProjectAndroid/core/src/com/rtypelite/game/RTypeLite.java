@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.util.ArrayList;
@@ -27,11 +28,6 @@ public class RTypeLite extends Game {
 	private ShotsManager shotsM;
 
 	public static MainCharacter player;
-	private GreenEnemy gEnemy;
-	private OrangeEnemy oEnemy;
-
-
-	//public static Vector<Enemy> enemies = new Vector<Enemy>();
 
 
 	@Override
@@ -55,6 +51,7 @@ public class RTypeLite extends Game {
 
 		stage.addActor(shotsM);
 		stage.addActor(enemiesM);
+		stage.addActor(EnemyManager.enemies);
 
 		inputprac = new InputProcesador(player);
 		Gdx.input.setInputProcessor(inputprac);
@@ -64,10 +61,10 @@ public class RTypeLite extends Game {
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		//check colisions
 		super.render();
 
 		stage.draw();
-
 		stage.act();
 
 

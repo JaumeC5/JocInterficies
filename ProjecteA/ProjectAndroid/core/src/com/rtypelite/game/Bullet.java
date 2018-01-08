@@ -22,17 +22,6 @@ public class Bullet extends GameObject {
         bounds = new Rectangle(getX(), getY(), texture.getWidth(), texture.getHeight());
     }
 
-    /*
-    static public void addBullet(Bullet b){RTypeLite.bullets.add(b);}
-
-    static public Bullet getBullet(int pos){return RTypeLite.bullets.get(pos);}
-
-    static public void deleteBullet(int bullet){
-        RTypeLite.bullets.remove(getBullet(bullet));
-    }
-    */
-
-
     @Override
     public void act(float delta) {
         setX(getX() + bulletSpeed* delta);

@@ -16,14 +16,11 @@ public abstract class Enemy extends GameObject {
 
     public int velX, velY;
     public Rectangle bounds;
-    MathUtils mathU;
 
     public Enemy(Texture texture){
         this.texture = texture;
         bounds = new Rectangle(getX(), getY(), texture.getWidth(), texture.getHeight());
     }
-
-    //public abstract void draw(Batch batch, float parentAlpha);
 
     @Override
     public abstract void act(float delta);

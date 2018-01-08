@@ -15,4 +15,5 @@ public class GameObject extends Actor {
         batch.draw(texture, getX(), getY(), 0,0, texture.getWidth(),texture.getHeight(), getScaleX(),
                 getScaleY(), getRotation(), 0,0,texture.getWidth(), texture.getHeight(),true, false);
     }
+    //Game object ferla abstracta i act abstracte
 }
