@@ -21,8 +21,4 @@ public abstract class Enemy extends GameObject {
         this.texture = texture;
         bounds = new Rectangle(getX(), getY(), texture.getWidth(), texture.getHeight());
     }
-
-    @Override
-    public abstract void act(float delta);
-
 }

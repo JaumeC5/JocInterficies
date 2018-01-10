@@ -25,6 +25,5 @@ public class Bullet extends GameObject {
     @Override
     public void act(float delta) {
         setX(getX() + bulletSpeed* delta);
-
     }
 }

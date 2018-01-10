@@ -15,10 +15,6 @@ public class InputProcesador extends InputAdapter {
     private MainCharacter personaje;
     private Vector2 lastTouch = new Vector2();
 
-    private MainCharacter player;
-    private Stage stage;
-    private AssetsManager assets = new AssetsManager();
-
     public InputProcesador(MainCharacter k) {
         personaje = k;
     }
@@ -28,7 +24,7 @@ public class InputProcesador extends InputAdapter {
 
         lastTouch.set(screenX, screenY);
         if (button == Input.Buttons.RIGHT){
-            Bullet bullet = new Bullet(assets.textureBullet);
+            Bullet bullet = new Bullet(RTypeLite.assets.textureBullet);
             ShotsManager.bullets.add(bullet);
             return true;
         }

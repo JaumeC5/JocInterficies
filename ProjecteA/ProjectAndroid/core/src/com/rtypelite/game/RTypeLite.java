@@ -20,10 +20,9 @@ import java.util.Vector;
 public class RTypeLite extends Game {
 
 	private InputProcesador inputprac;
-	private Stage stage;
-
+	public static Stage stage;
+	public static AssetsManager assets;
 	private AssetManager manager;
-	private AssetsManager assets;
 	private EnemyManager enemiesM;
 	private ShotsManager shotsM;
 
@@ -34,8 +33,8 @@ public class RTypeLite extends Game {
 	public void create () {
 		stage = new Stage();
 		assets = new AssetsManager();
-		enemiesM = new EnemyManager(assets, stage);
-		shotsM = new ShotsManager(assets, stage);
+		enemiesM = new EnemyManager();
+		shotsM = new ShotsManager();
 
 		manager = new AssetManager();
 		manager.load("spaceship.png", Texture.class);

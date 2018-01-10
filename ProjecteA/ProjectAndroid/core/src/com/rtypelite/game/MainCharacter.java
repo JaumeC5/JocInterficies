@@ -34,7 +34,6 @@ public class MainCharacter extends GameObject {
 
     @Override
     public void act(float delta) {
-        super.act(delta);
         if(getY() >= Gdx.graphics.getHeight() - 10){
             setY(Gdx.graphics.getHeight() - 10);
         }

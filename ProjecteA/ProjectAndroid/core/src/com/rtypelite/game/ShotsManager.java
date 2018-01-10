@@ -11,20 +11,14 @@ import java.util.Vector;
 
 public class ShotsManager extends Actor {
 
-    Stage stage;
-    private AssetsManager assets;
-
     public static Vector<Bullet> bullets = new Vector<Bullet>();
 
-    public ShotsManager(AssetsManager assetsManager, Stage stage){
-        assets = assetsManager;
-        this.stage = stage;
-    }
+    public ShotsManager(){}
 
     public void act(float delta) {
 
         for (int i = 0; i < bullets.size(); i++) {
-            stage.addActor(bullets.get(i));
+            RTypeLite.stage.addActor(bullets.get(i));
 			/*
 			if(bullets.get(i).bounds.overlaps(gEnemy.bounds)){
 				bullets.remove(i);
