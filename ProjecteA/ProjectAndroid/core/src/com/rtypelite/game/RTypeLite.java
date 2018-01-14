@@ -4,6 +4,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -22,9 +24,10 @@ public class RTypeLite extends Game {
 	private InputProcesador inputprac;
 	public static Stage stage;
 	public static AssetsManager assets;
-	private AssetManager manager;
+	public static AssetManager manager;
 	private EnemyManager enemiesM;
 	private ShotsManager shotsM;
+	private Music bgMusic;
 
 	public static MainCharacter player;
 
@@ -40,7 +43,12 @@ public class RTypeLite extends Game {
 		manager.load("spaceship.png", Texture.class);
 		manager.load("enemyOrange2.png", Texture.class);
 		manager.load("enemyGreen2.png", Texture.class);
+		manager.load("bulletS.wav", Sound.class);
+		manager.load("bgMusic.mp3", Music.class);
 		manager.finishLoading();
+
+		bgMusic = manager.get("bgMusic.mp3");
+		bgMusic.play();
 
 		//Player
 		player = new MainCharacter(assets.texturePlayer);
@@ -60,6 +68,7 @@ public class RTypeLite extends Game {
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 		//check colisions
 		super.render();
 

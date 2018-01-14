@@ -26,6 +26,7 @@ public class InputProcesador extends InputAdapter {
         if (button == Input.Buttons.RIGHT){
             Bullet bullet = new Bullet(RTypeLite.assets.textureBullet);
             ShotsManager.bullets.add(bullet);
+            ShotsManager.ShotSound();
             return true;
         }
         return true;
